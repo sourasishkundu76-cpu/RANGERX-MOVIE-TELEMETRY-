@@ -1,0 +1,6 @@
+{
+  "name": "Tactical Field Telemetry",
+  "description": "Mission-critical tactical HUD interface for cybernetic wildlife reconnaissance, bio-signature tracking, and sector defense.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

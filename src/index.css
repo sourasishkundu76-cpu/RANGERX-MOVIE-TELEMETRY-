@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Chivo', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --color-obsidian: #06090e;
+  --color-surface-dim: #101419;
+  --color-surface-container: #1c2025;
+  --color-surface-low: #181c21;
+  --color-surface-high: #272a30;
+  --color-surface-highest: #31353b;
+
+  --color-tactical-cyan: #00f3ff;
+  --color-alert-crimson: #ff1e44;
+  --color-bio-emerald: #00ff88;
+  --color-telemetry-amber: #ffaa00;
+  --color-hud-border: #213247;
+  --color-hud-muted: #506882;
+  --color-hud-text: #e0e2ea;
+}
+
+/* Base resets & typography */
+body {
+  font-family: var(--font-body);
+  background-color: #06090e;
+  color: #e0e2ea;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono, code, kbd, samp {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Precision chamfer polygon cuts */
+.chamfer-4 {
+  clip-path: polygon(
+    0 4px,
+    4px 0,
+    calc(100% - 4px) 0,
+    100% 4px,
+    100% calc(100% - 4px),
+    calc(100% - 4px) 100%,
+    4px 100%,
+    0 calc(100% - 4px)
+  );
+}
+
+.chamfer-6 {
+  clip-path: polygon(
+    0 6px,
+    6px 0,
+    calc(100% - 6px) 0,
+    100% 6px,
+    100% calc(100% - 6px),
+    calc(100% - 6px) 100%,
+    6px 100%,
+    0 calc(100% - 6px)
+  );
+}
+
+.chamfer-8 {
+  clip-path: polygon(
+    0 8px,
+    8px 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
+}
+
+.chamfer-tr-bl {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
+}
+
+.chamfer-tl-br {
+  clip-path: polygon(
+    8px 0,
+    100% 0,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    0 100%,
+    0 8px
+  );
+}
+
+/* Tactical HUD corner bracket ornament */
+.hud-corner-brackets {
+  position: relative;
+}
+.hud-corner-brackets::before,
+.hud-corner-brackets::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  pointer-events: none;
+  z-index: 10;
+}
+.hud-corner-brackets::before {
+  top: 0;
+  left: 0;
+  border-top: 1.5px solid #00f3ff;
+  border-left: 1.5px solid #00f3ff;
+}
+.hud-corner-brackets::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 1.5px solid #00f3ff;
+  border-right: 1.5px solid #00f3ff;
+}
+
+/* Scanlines overlay */
+.crt-scanlines {
+  background: linear-gradient(
+    rgba(18, 22, 28, 0) 50%,
+    rgba(0, 0, 0, 0.28) 50%
+  ),
+  linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.02),
+    rgba(0, 255, 136, 0.01),
+    rgba(0, 243, 255, 0.02)
+  );
+  background-size: 100% 4px, 6px 100%;
+}
+
+/* Custom Tactical Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0e14;
+}
+::-webkit-scrollbar-thumb {
+  background: #213247;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f3ff;
+}
